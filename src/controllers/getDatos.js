@@ -2,10 +2,8 @@ const { Consumo, } = require("../db.js");
 const getDatos = async (req, res) => {
 
 const zona=req.query.zona
-console.log(req.query)
 var misConsumos
-if (zona){
-    misConsumos = await Consumo.findAll({where:{zona:zona}});}
+    misConsumos = await Consumo.findAll();
 
     res.json(misConsumos);
   } 
