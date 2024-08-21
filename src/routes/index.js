@@ -21,6 +21,7 @@ router.get("/permisos", getPermisos);
 router.get("/esteusuario", getUsuario);
 router.post("/asignarpermisos", asignarPermisos);
 router.post("/posts", crearPost);
+router.get("/posts", crearPost);
 router.delete("/datos", deleteDatos);
 
 // Ejemplo: router.use('/auth', authRouter);

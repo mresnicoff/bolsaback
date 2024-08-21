@@ -19,8 +19,36 @@ if(req.method==="POST"){
     res.status(500).json({ message: error });
   }
 }
+else {
+ var posts= await Post.findAll({raw: true});
+console.log(posts)
+ var now= new Date()
 
-}
+
+
+ 
+ if(posts.length==0){posts=[
+
+  {
+      id: 1,
+      title: "No hay empleos para mostrar",
+      time: new Date(),
+      desc: "No hay empleos para mostrar",
+ 
+  }
+]}
+
+var posts=posts.map(post =>{
+  var fecha = new Date(post.time)
+  post.time=Math.round((now.getTime()-fecha.getTime())/(1000*60*60*24))
+
+  return post})
+
+console.log(posts)
+  res.json(posts);
+
+
+}}
 
 
 module.exports = crearPost;
