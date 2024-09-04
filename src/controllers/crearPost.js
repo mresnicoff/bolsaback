@@ -1,4 +1,4 @@
-const { Post } = require("../db.js");
+const { Post, Usuario } = require("../db.js");
 const bcrypt = require("bcrypt")
 const crearPost = async (req, res) => {
 
@@ -20,8 +20,16 @@ if(req.method==="POST"){
   }
 }
 else {
- var posts= await Post.findAll({raw: true});
-console.log(posts)
+  const {id}=req.params
+  console.log(id)
+  if(!id){ 
+ var posts= await Post.findAll({raw: true});}
+ else{
+  var posts= await Post.findAll({where: { id: id },raw: true})
+}
+ 
+
+
  var now= new Date()
 
 
@@ -34,17 +42,18 @@ console.log(posts)
       title: "No hay empleos para mostrar",
       time: new Date(),
       desc: "No hay empleos para mostrar",
+      localidad:"CABA",
+      empresa:"ninguna"
  
   }
 ]}
-
+console.log(posts)
 var posts=posts.map(post =>{
   var fecha = new Date(post.time)
   post.time=Math.round((now.getTime()-fecha.getTime())/(1000*60*60*24))
 
   return post})
 
-console.log(posts)
   res.json(posts);
 
 

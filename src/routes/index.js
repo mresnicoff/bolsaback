@@ -8,6 +8,7 @@ const getUsuario = require("../controllers/getUsuario.js");
 const asignarPermisos = require("../controllers/asignarPermisos.js");
 const deleteDatos = require("../controllers/deletetDatos.js");
 const crearPost = require("../controllers/crearPost.js");
+const  emailController  = require("../controllers/emailController.js");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
@@ -17,11 +18,13 @@ router.get("/getdatos", getDatos);
 router.post("/usuarios", handleUsuarios);
 router.get("/usuarios", handleUsuarios);
 router.post("/permisos", postPermisos);
+router.post("/emails", emailController);
 router.get("/permisos", getPermisos);
 router.get("/esteusuario", getUsuario);
 router.post("/asignarpermisos", asignarPermisos);
 router.post("/posts", crearPost);
 router.get("/posts", crearPost);
+router.get("/posts/:id", crearPost);
 router.delete("/datos", deleteDatos);
 
 // Ejemplo: router.use('/auth', authRouter);
