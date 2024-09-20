@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailOptions = {
-  from: email,
-  to: email,
+  from: "Bolsa de Trabajo <flightdeck2023@gmail.com>",
+ 
 };
 module.exports={mailOptions,transporter}
